@@ -5,6 +5,7 @@
 #include <limits>
 
 using namespace std;
+
 class Artist
 {
 private:
@@ -22,7 +23,7 @@ private:
             albums = a;
         }
 
-            String getName() const
+        String getName() const
         {
             Return name;
         }
@@ -69,6 +70,98 @@ private:
             Cout << “Country: “ << country << endl;
             Cout << “Albums: “ << albums << endl;
         }
+};
+
+Class Song
+{
+Private:
+    String title;
+    Artist artist;
+    String album;
+    Int duration;
+    String genre;
+    Int releaseYear;
+
+Public:
+    Song(string t, Artist a, string al, int d, string g, int r)
+    {
+        Title = t;
+        Artist = a;
+        Album = al;
+        Duration = d;
+        Genre = g;
+        releaseYear = r;
+    }
+
+    String getTitle() const
+    {
+        Return title;
+    }
+
+    Artist getArtist() const
+    {
+        Return artist;
+    }
+
+    String getAlbum() const
+    {
+        Return album;
+    }
+
+    Int getDuration() const
+    {
+        Return duration;
+    }
+
+    String getGenre() const
+    {
+        Return genre;
+    }
+
+    Int getReleaseYear() const
+    {
+        Return releaseYear;
+    }
+
+    Void setTitle(string t)
+    {
+        Title = t;
+    }
+
+    Void setArtist(Artist a)
+    {
+        Artist = a;
+    }
+
+    Void setAlbum(string al)
+    {
+        Album = al;
+    }
+
+    Void setDuration(int d)
+    {
+        Duration = d;
+    }
+
+    Void setGenre(string g)
+    {
+        Genre = g;
+    }
+
+    Void setReleaseYear(int r)
+    {
+        releaseYear = r;
+    }
+
+    Void display() const
+    {
+        Cout << “Title: “ << title << endl;
+        artist.display();
+        Cout << “Album: “ << album << endl;
+        Cout << “Duration: “ << duration << “ seconds” << endl;
+        Cout << “Genre: “ << genre << endl;
+        Cout << “Release Year: “ << releaseYear << endl;
+    }
 };
 
 
