@@ -88,6 +88,7 @@ private:
 
 public:
     Song(string t, Artist a, string al, int d, string g, int r)
+    :artist(a)
     {
         title = t;
         artist = a;
