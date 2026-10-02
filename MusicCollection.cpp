@@ -1,5 +1,6 @@
 #include "MusicCollection.h"
 #include <iostream>
+
 using namespace std;
 
 MusicCollection::MusicCollection(string n, int songs)
@@ -34,4 +35,10 @@ void MusicCollection::setName(string n)
 void MusicCollection::setNumberOfSongs(int songs)
 {
     numberOfSongs = songs;
+}
+
+void showCollectionInfo(const MusicCollection& collection)
+{
+    cout << "Collection Name: " << collection.name << endl;
+    cout << "Number of Songs: " << collection.numberOfSongs << endl;
 }
