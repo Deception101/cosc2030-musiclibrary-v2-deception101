@@ -2,6 +2,7 @@
 #define MUSICCOLLECTION_H
 
 #include <string>
+
 using namespace std;
 
 class MusicCollection
@@ -23,6 +24,8 @@ public:
     void setNumberOfSongs(int songs);
 
     virtual void display() const = 0;
+
+    friend void showCollectionInfo(const MusicCollection& collection);
 };
 
 #endif
