@@ -1,181 +1,58 @@
 #include <iostream>
-#include <fstream>
-#include <vector>
-#include <string>
-#include <limits>
+#include "Artist.h"
+#include "Song.h"
+#include "MusicCollection.h"
+#include "Playlist.h"
+#include "StreamingService.h"
 
 using namespace std;
 
-//represents a music artist
-class Artist
-{
-private:
-    string name;
-    string genre;
-    string country;
-    int albums;
-
-public:
-//constructor, gives values to Artist's objects
-    Artist(string n, string g, string c, int a)
-    {
-        name = n;
-        genre = g;
-        country = c;
-        albums = a;
-    }
-//Accessors, returns the artist's info
-    string getName() const
-    {
-        return name;
-    }
-
-    string getGenre() const
-    {
-        return genre;
-    }
-
-    string getCountry() const
-    {
-        return country;
-    }
-
-    int getAlbums() const
-    {
-        return albums;
-    }
-
-    //mutator, sets the artist's info
-    void setName(string n)
-    {
-        name = n;
-    }
-
-    void setGenre(string g)
-    {
-        genre = g;
-    }
-
-    void setCountry(string c)
-    {
-        country = c;
-    }
-
-    void setAlbums(int a)
-    {
-        albums = a;
-    }
-
-    //prints all the artist's info
-    void display() const
-    {
-        cout << "Artist: " << name << endl;
-        cout << "Genre: " << genre << endl;
-        cout << "Country: " << country << endl;
-        cout << "Albums: " << albums << endl;
-    }
-};
-
-class Song
-{
-private:
-    string title;
-    Artist artist;
-    string album;
-    int duration;
-    string genre;
-    int releaseYear;
-
-public:
-    Song(string t, Artist a, string al, int d, string g, int r)
-    :artist(a)
-    {
-        title = t;
-        artist = a;
-        album = al;
-        duration = d;
-        genre = g;
-        releaseYear = r;
-    }
-
-    string getTitle() const
-    {
-        return title;
-    }
-
-    Artist getArtist() const
-    {
-        return artist;
-    }
-
-    string getAlbum() const
-    {
-        return album;
-    }
-
-    int getDuration() const
-    {
-        return duration;
-    }
-
-    string getGenre() const
-    {
-        return genre;
-    }
-
-    int getReleaseYear() const
-    {
-        return releaseYear;
-    }
-
-    void setTitle(string t)
-    {
-        title = t;
-    }
-
-    void setArtist(Artist a)
-    {
-        artist = a;
-    }
-
-    void setAlbum(string al)
-    {
-        album = al;
-    }
-
-    void setDuration(int d)
-    {
-        duration = d;
-    }
-
-    void setGenre(string g)
-    {
-        genre = g;
-    }
-
-    void setReleaseYear(int r)
-    {
-        releaseYear = r;
-    }
-
-    void display() const
-    {
-        cout << "Title: " << title << endl;
-        artist.display();
-        cout << "Album: " << album << endl;
-        cout << "Duration: " << duration << " seconds" << endl;
-        cout << "Genre: " << genre << endl;
-        cout << "Release Year: " << releaseYear << endl;
-    }
-};
-
 int main()
 {
+    // Create an artist object
     Artist artist("Colby Acuff", "Country", "USA", 5);
 
-    Song song("If I Were the Devil", artist, "Western White Pines", 220, "Country", 2022);
+    // Create a song object using the artist object
+    Song song("If I Were the Devil", artist, "Western White Pines",
+              220, "Country", 2022);
 
+    // Display the song's information
+    cout << "----- SONG -----" << endl;
     song.display();
+
+    // Create a playlist object
+    Playlist playlist("Country Favorites", 1);
+
+    // Add the song to the Playlist
+    playlist.addSong(song);
+
+    // Display the Playlist
+    cout << endl;
+    cout << "----- PLAYLIST -----" << endl;
+    playlist.display();
+
+    // Create a StreamingService object
+    StreamingService service("My Music Streaming", 1);
+
+    // Add the song to the StreamingService
+    service.addSong(song);
+
+    // Display the StreamingService
+    cout << endl;
+    cout << "----- STREAMING SERVICE -----" << endl;
+    service.display();
+
+    // Demonstrate polymorphism using a base-class pointer
+    MusicCollection* collection = &playlist;
+
+    cout << endl;
+    cout << "----- POLYMORPHISM -----" << endl;
+    collection->display();
+
+    // Demonstrate the friend function
+    cout << endl;
+    cout << "----- FRIEND FUNCTION -----" << endl;
+    showCollectionInfo(playlist);
 
     return 0;
 }
