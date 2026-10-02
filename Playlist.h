@@ -3,11 +3,14 @@
 
 #include "MusicCollection.h"
 #include "Song.h"
+#include <vector>
+
+using namespace std;
 
 class Playlist : public MusicCollection
 {
 private:
-    Song* songs;
+    vector<Song> songs;
 
 public:
     Playlist(string n, int songCount);
@@ -15,10 +18,13 @@ public:
 
     Playlist(const Playlist& other);
 
-    void display() const override;
+    void addSong(const Song& song);
 
-    Song* getSongs() const;
-    void setSongs(Song* s);
+    vector<Song> getSongs() const;
+
+    void setSongs(vector<Song> s);
+
+    void display() const override;
 };
 
 #endif
